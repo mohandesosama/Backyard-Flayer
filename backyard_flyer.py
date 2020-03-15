@@ -130,7 +130,7 @@ class BackyardFlyer(Drone):
         print("disarm transition")
 
         self.disarm()
-        self.flight_phase = States.DISARMING
+        self.flight_state = States.DISARMING
 
 
     def manual_transition(self):
