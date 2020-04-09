@@ -4,11 +4,12 @@ This project is mainly used for controlling drone simulator. The project has the
 2. Install miniconda and the corresponding environment
 3. running the script (backyard_flayer.py)
 
-## Installing the simulator
+## 1. Installing the simulator
 To run the backyard_flyer.py script, you might want to get setup with the Udacity drone simulator. to run backyard_flyer.py script you should hold this simulator **running**.
 
 ### Download and Installation
 You can download the simulator [[here]](https://github.com/udacity/FCND-Simulator-Releases/releases).
 Once you've downloaded the latest release, unzip the file and open the simulator by double-clicking on the app/executable.
+![](https://github.com/mohandesosama/Backyard-Flayer/blob/master/docs/screen-shot-2018-01-19-at-2.41.57-pm.png)
 
 
