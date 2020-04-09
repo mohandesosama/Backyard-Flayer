@@ -30,3 +30,43 @@ You can manually control the drone using the following key commands:
 |A/D	|move left / right|
 |Q/E	|turn left/ right|
 
+Try using these controls to take off, fly in a square shape, and then land.
+
+## 2. Installing miniconda and environment
+Before you can program flight plans for the simulator, there's a bit of setup that's required first.
+
+You are welcome to skip this section if you are taking the free preview and do not want to command the drone with Python code or complete the Backyard Flyer project.
+
+### Setup Instructions 
+Read through the instructions below. If these commands look familiar to you, then you should use these VERY abbreviated instructions to get yourself set up.
+
+* download [miniconda](https://conda.io/miniconda.html) and then install by opening the file/app that you download.
+
+* `conda env create -f environment.yml` to create the miniconda environment: this took me 20 minutes to run due to the large number of installs required.
+
+* `source activate fcnd` to activate the environment (you'll need to do this whenever you want to work in this environment).
+
+### NOTE: 
+If the above command fails due to internet issues or timed out HTTP request then remove the partially built environment using the following command (then run the above create command again):
+
+`conda env remove -n fcnd`
+Verify that the FCND (listed fcnd) environment was created in your environments:
+
+`conda info --envs`
+Cleanup downloaded libraries (remove tarballs, zip files, etc):
+
+`conda clean -tp`
+
+## 3. Running the backyard_flyer.py script
+* run the Drone simulator 
+* Open miniconda and make sure you are on the fcnd enviroment by using 
+`$ source activate fcnd`
+or
+`$ activate fcnd`
+* cd to the folder of the project. 
+* run `python backyard_flyer.py`
+It is expected that the drone will fly in square and then return back to its initial position. 
+
+Regards
+Osama Hosameldeen
+
