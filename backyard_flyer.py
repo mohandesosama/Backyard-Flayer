@@ -26,7 +26,6 @@ class BackyardFlyer(Drone):
         self.target_position = np.array([0.0, 0.0, 0.0])
         self.all_waypoints = []
         self.in_mission = True
-        self.check_state = {}
 
         # initial state
         self.flight_state = States.MANUAL

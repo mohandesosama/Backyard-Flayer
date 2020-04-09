@@ -18,6 +18,8 @@ class UpAndDownFlyer(Drone):
         super().__init__(connection)
         self.target_position = np.array([0.0,0.0,0.0])
         self.in_mission = True
+        self.all_waypoints=[]
+        self.local_waypoints = [[15.0, 0.0, 5.0], [15.0, 15.0, 5.0], [0.0, 15.0, 5.0], [0.0, 0.0, 5.0]]
 
         self.flight_phase =  Phases.MANUAL
 
@@ -29,14 +31,19 @@ class UpAndDownFlyer(Drone):
         if self.flight_phase == Phases.TAKEOFF:
             altitude = -1.0 * self.local_position[2]
             if altitude > 0.95 * self.target_position[2]:
+                self.all_waypoints = self.local_waypoints
                 self.hovering_transition()
         elif self.flight_phase == Phases.HOVERING:
              if np.linalg.norm(self.target_position[0:2] - self.local_position[0:2]) < 0.5:
-                self.landing_transition()
+                if len(self.all_waypoints) > 0:
+                     self.hovering_transition()
+                else:
+                    if np.linalg.norm(self.local_velocity[0:2]) < 1.0:
+                        self.landing_transition()
 
     def velocity_callback(self):
         if self.flight_phase == Phases.LANDING:
-            if((self.global_position[2]-self.global_position[2] < 0.1) and abs(self.local_position[2]) < 0.01):
+            if((self.global_position[2]-self.global_position[2] < 0.1) and abs(self.local_position[2]) < 1.0):
                 self.disarming_transition()
 
             
@@ -49,13 +56,13 @@ class UpAndDownFlyer(Drone):
             if self.armed:
                 self.takeoff_transition()
         elif self.flight_phase == Phases.DISARMING:
-            if not self.armed:
+            if ~ self.armed and ~ self.guided:
                 self.manual_transition()
     
     def hovering_transition(self):
         print("hovering transition")
-        target_altitude = 10.0
-        self.target_position[1]=target_altitude
+
+        self.target_position=self.all_waypoints.pop(0)
         print("target position", self.target_position)
         self.cmd_position(self.target_position[0], self.target_position[1], self.target_position[2], 0.0)
         self.flight_phase = Phases.HOVERING
