@@ -58,15 +58,16 @@ Cleanup downloaded libraries (remove tarballs, zip files, etc):
 `conda clean -tp`
 
 ## 3. Running the backyard_flyer.py script
-* run the Drone simulator 
+* Run the Drone simulator 
 * Open miniconda and make sure you are on the fcnd enviroment by using 
 `$ source activate fcnd`
 or
 `$ activate fcnd`
 * cd to the folder of the project. 
-* run `python backyard_flyer.py`
+* Run `python backyard_flyer.py`
 It is expected that the drone will fly in square and then return back to its initial position. 
 
 Regards
+
 Osama Hosameldeen
 
